@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2D RPG World Builder</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app">
+        <div id="toolbar">
+            <div id="tools">
+                <button id="generateTileBtn">Generate New Tile</button>
+                <button id="selectTileBtn">Select Tile</button>
+                <button id="eraseBtn">Erase</button>
+                <button id="saveBtn">Save World</button>
+                <button id="loadBtn">Load World</button>
+                <div id="networkControls">
+                    <button id="hostBtn">Host Game</button>
+                    <button id="joinBtn">Join Game</button>
+                    <input type="text" id="lobbyIdInput" placeholder="Lobby ID">
+                    <span id="connectionStatus">Disconnected</span>
+                </div>
+            </div>
+            <div id="tileLibrary">
+                <h3>Tile Library</h3>
+                <div id="tileContainer"></div>
+            </div>
+        </div>
+        <div id="gameArea">
+            <canvas id="worldCanvas"></canvas>
+            <div id="coordinates">X: 0, Y: 0</div>
+        </div>
+        <div id="modalContainer" class="hidden">
+            <div id="tileGeneratorModal" class="modal">
+                <h2>Generate Tile</h2>
+                <textarea id="tilePrompt" placeholder="Describe your tile (e.g., grassy terrain with flowers)"></textarea>
+                <div class="modal-actions">
+                    <button id="generateBtn">Generate</button>
+                    <button id="cancelGenerateBtn">Cancel</button>
+                </div>
+                <div id="generatingIndicator" class="hidden">Generating tile...</div>
+                <div id="tilePreview" class="hidden">
+                    <img id="tilePreviewImg" src="" alt="Tile Preview">
+                    <input id="tileName" type="text" placeholder="Tile Name">
+                    <button id="saveTileBtn">Save Tile</button>
+                </div>
+            </div>
+            <div id="lobbyModal" class="modal hidden">
+                <h2 id="lobbyTitle">Game Lobby</h2>
+                <div id="lobbyInfo">
+                    <p>Lobby ID: <span id="lobbyId"></span></p>
+                    <p>Share this ID with others to join your game.</p>
+                </div>
+                <div id="playersList">
+                    <h3>Connected Players</h3>
+                    <ul id="playersListItems"></ul>
+                </div>
+                <div class="modal-actions">
+                    <button id="startGameBtn">Start Game</button>
+                    <button id="leaveLobbyBtn">Leave Lobby</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="importmap">
+        {
+            "imports": {
+                "peerjs": "https://cdn.jsdelivr.net/npm/peerjs@1.4.7/dist/peerjs.min.js"
+            }
+        }
+    </script>
+    <script src="scripts/storage.js"></script>
+    <script src="scripts/tileGenerator.js"></script>
+    <script src="scripts/grid.js"></script>
+    <script src="scripts/networking.js"></script>
+    <script src="scripts/ui.js"></script>
+    <script src="scripts/main.js"></script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"4c6229722a6346bc8eb5cb0e5eae5d41","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+</html>
+
